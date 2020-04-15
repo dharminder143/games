@@ -6,6 +6,7 @@ urlpatterns = [
     path('post', views.post,name='post'),
     path('simple_upload/', views.simple_upload,name='simple_upload'),
     path('search/', views.search, name='search'),  
-    path('action-games/',views.post_action,name='post_action')
+    path('action-games/',views.post_action,name='post_action'),
+    # path('action/',views.all_cat,name='all_cat'),
 
 ]

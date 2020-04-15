@@ -6,7 +6,7 @@ from .resources import PersonResource
 from tablib import Dataset
 from django.db.models import Q
 from django.contrib import messages
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def product(request):
 	post = Product.objects.all() 
@@ -16,14 +16,18 @@ def product(request):
 												}) 
 
 def post(request):
-	post = Product.objects.all() 
-	action = Product.objects.filter(category='Action')
-	return render(request,'blog/single-game.html',{'posts':post,
-												'actions':action,
+    post = Product.objects.all()
+    paginator = Paginator(post, 12)
+    page = request.GET.get('page')
+    post = paginator.get_page(page)
+    return render(request,'blog/single-game.html',{'posts':post,											
 												})  
 def post_action(request):
-	action = Product.objects.filter(category='Action')
-	return render(request,'blog/action-game.html',{'actions':action,
+    action = Product.objects.filter(category='Action')
+    paginator = Paginator(action, 12)
+    page = request.GET.get('page')
+    action = paginator.get_page(page)
+    return render(request,'blog/action-game.html',{'actions':action,
 												})  
 
 
@@ -51,4 +55,16 @@ def search(request):
                                         Q(vendor__icontains=query))
     if allpost.count() == 0:
         messages.error(request,'can not found')
+    paginator = Paginator(allpost, 12)
+    page = request.GET.get('page')
+    try:
+        allpost = paginator.page(page)
+    except PageNotAnInteger:
+        allpost = paginator.page(1)
+    except EmptyPage:
+        allpost = paginator.page(paginator.num_pages)
+    # allpost = paginator.get_page(page)
     return render(request,'blog/search.html',{'allpost':allpost, 'query':query})
+
+
+
