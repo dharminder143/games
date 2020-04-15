@@ -98,32 +98,18 @@
                 </a>
                 
                 <ul class="nk-nav nk-nav-right d-none d-lg-table-cell" data-nav-mobile="#nk-nav-mobile">
-        {% for p in cat_all %}            
+            <li class=" nk-drop-item">
+            <a href="/#dhar">
+                MOST PLAYED
+                
+            </a></li>
+        {% for p in cat %}            
         <li class=" nk-drop-item">
             <a href="{% url 'search' %}?query={{p.category}}">
                 {{p.category}}
                 
 			</a></li>
-            {% endfor %}
-                       
-            <!-- <li class=" nk-drop-item">
-            <a href="#">
-                Action Games
-                
-			</a></li>
-                       
-                          <li class=" nk-drop-item">
-            <a href="#">
-                Funny Games
-                
-			</a></li>
-                       
-                          <li class=" nk-drop-item">
-            <a href="#">
-               Tending Games
-                
-			</a></li> -->
-                        
+            {% endfor %}  
       
                 </ul>
                 <ul class="nk-nav nk-nav-right nk-nav-icons">

@@ -4,14 +4,15 @@ from django.shortcuts import render , redirect , get_object_or_404
 # Create your views here.
 from .resources import PersonResource
 from tablib import Dataset
-from django.db.models import Q
+from django.db.models import Q , Count
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def product(request):
-	post = Product.objects.all() 
-	action = Product.objects.filter(category='Action')
-	return render(request,'blog/index.html',{'posts':post,
+    postss=Product.objects.values('category').distinct()
+    post = Product.objects.filter(category__in=[item['category'] for item in postss])[:7]
+    action = Product.objects.filter(category='Action')[:10]
+    return render(request,'blog/index.html',{'posts':post,
 												'actions':action,
 												}) 
 
