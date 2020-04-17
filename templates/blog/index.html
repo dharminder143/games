@@ -95,8 +95,7 @@
                     </a>
                     <div class="nk-product-cont">
                         <div class="nk-gap-1"></div>
-                        <h3 class="nk-product-title h5"><a href="{{p.GameURL}}">{{p.gamename}}</a></h3>                     
-                       <p>category {{p.category}}</p>
+                        <h3 class="nk-product-title h5"><a href="{{p.GameURL}}">{{p.gamename}}</a></h3>  
                     </div>
                 </div>
             </div></div>
@@ -108,14 +107,12 @@
 
     <!-- START: Featured Games -->
  
- 
-        <div class="read-more"><a href="{% url 'post_action' %}">See All</a></div>
+        <div class="read-more"><a href="{% url 'search' %}?query=Action">See All</a></div>
     <h3 class="nk-decorated-h-2"><span><span class="text-main-1">Action</span> Games</span></h3>
 
     <div class="nk-carousel nk-carousel-x4" data-autoplay="5000" data-dots="false" data-cell-align="left" data-arrows="true">
         <div class="nk-carousel-inner">
-            
-            {% for p in actions %}
+            {% for p in Action %}
             <div><div class="pl-5 pr-5">
                 <div class="nk-product-cat-3">
                     <a class="nk-product-image" href="{{p.GameURL}}">
@@ -125,12 +122,135 @@
                         <div class="nk-gap-1"></div>
                         <h3 class="nk-product-title h5"><a href="{{p.GameURL}}">{{p.gamename}}</a></h3>
                        
+                    </div>
+                </div>
+            </div></div>
+            {% endfor %}
+        </div>
+    </div>
+<!-- START: Featured Games -->
+ 
+        <div class="read-more"><a href="{% url 'search' %}?query=Racing">See All</a></div>
+    <h3 class="nk-decorated-h-2"><span><span class="text-main-1">Racing</span> Games</span></h3>
+
+    <div class="nk-carousel nk-carousel-x4" data-autoplay="5000" data-dots="false" data-cell-align="left" data-arrows="true">
+        <div class="nk-carousel-inner">
+            {% for p in Racing %}
+            <div><div class="pl-5 pr-5">
+                <div class="nk-product-cat-3">
+                    <a class="nk-product-image" href="{{p.GameURL}}">
+                        <img style="height: 150px;width:150px"  src="{{p.IMGURL}}" alt="So saying he unbuckled">
+                    </a>
+                    <div class="nk-product-cont">
+                        <div class="nk-gap-1"></div>
+                        <h3 class="nk-product-title h5"><a href="{{p.GameURL}}">{{p.gamename}}</a></h3>
                        
                     </div>
                 </div>
             </div></div>
             {% endfor %}
+        </div>
+    </div>
 
+    <!-- END: Most Popular -->
+
+<!-- START: Featured Games -->
+ 
+        <div class="read-more"><a href="{% url 'search' %}?query=sports">See All</a></div>
+    <h3 class="nk-decorated-h-2"><span><span class="text-main-1">sports</span> Games</span></h3>
+
+    <div class="nk-carousel nk-carousel-x4" data-autoplay="5000" data-dots="false" data-cell-align="left" data-arrows="true">
+        <div class="nk-carousel-inner">
+            {% for p in sports %}
+            <div><div class="pl-5 pr-5">
+                <div class="nk-product-cat-3">
+                    <a class="nk-product-image" href="{{p.GameURL}}">
+                        <img style="height: 150px;width:150px"  src="{{p.IMGURL}}" alt="So saying he unbuckled">
+                    </a>
+                    <div class="nk-product-cont">
+                        <div class="nk-gap-1"></div>
+                        <h3 class="nk-product-title h5"><a href="{{p.GameURL}}">{{p.gamename}}</a></h3>
+                       
+                    </div>
+                </div>
+            </div></div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- END: Most Popular -->
+
+<!-- START: Featured Games -->
+ 
+        <div class="read-more"><a href="{% url 'search' %}?query=Adventure">See All</a></div>
+    <h3 class="nk-decorated-h-2"><span><span class="text-main-1">Adventure</span> Games</span></h3>
+
+    <div class="nk-carousel nk-carousel-x4" data-autoplay="5000" data-dots="false" data-cell-align="left" data-arrows="true">
+        <div class="nk-carousel-inner">
+            {% for p in Adventure %}
+            <div><div class="pl-5 pr-5">
+                <div class="nk-product-cat-3">
+                    <a class="nk-product-image" href="{{p.GameURL}}">
+                        <img style="height: 150px;width:150px"  src="{{p.IMGURL}}" alt="So saying he unbuckled">
+                    </a>
+                    <div class="nk-product-cont">
+                        <div class="nk-gap-1"></div>
+                        <h3 class="nk-product-title h5"><a href="{{p.GameURL}}">{{p.gamename}}</a></h3>
+                       
+                    </div>
+                </div>
+            </div></div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- END: Most Popular -->
+<!-- START: Featured Games -->
+ 
+        <div class="read-more"><a href="{% url 'search' %}?query=Funny">See All</a></div>
+    <h3 class="nk-decorated-h-2"><span><span class="text-main-1">Funny</span> Games</span></h3>
+
+    <div class="nk-carousel nk-carousel-x4" data-autoplay="5000" data-dots="false" data-cell-align="left" data-arrows="true">
+        <div class="nk-carousel-inner">
+            {% for p in Funny %}
+            <div><div class="pl-5 pr-5">
+                <div class="nk-product-cat-3">
+                    <a class="nk-product-image" href="{{p.GameURL}}">
+                        <img style="height: 150px;width:150px"  src="{{p.IMGURL}}" alt="So saying he unbuckled">
+                    </a>
+                    <div class="nk-product-cont">
+                        <div class="nk-gap-1"></div>
+                        <h3 class="nk-product-title h5"><a href="{{p.GameURL}}">{{p.gamename}}</a></h3>
+                       
+                    </div>
+                </div>
+            </div></div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- END: Most Popular -->
+<!-- START: Featured Games -->
+ 
+        <div class="read-more"><a href="{% url 'search' %}?query=General">See All</a></div>
+    <h3 class="nk-decorated-h-2"><span><span class="text-main-1">General</span> Games</span></h3>
+
+    <div class="nk-carousel nk-carousel-x4" data-autoplay="5000" data-dots="false" data-cell-align="left" data-arrows="true">
+        <div class="nk-carousel-inner">
+            {% for p in General %}
+            <div><div class="pl-5 pr-5">
+                <div class="nk-product-cat-3">
+                    <a class="nk-product-image" href="{{p.GameURL}}">
+                        <img style="height: 150px;width:150px"  src="{{p.IMGURL}}" alt="So saying he unbuckled">
+                    </a>
+                    <div class="nk-product-cont">
+                        <div class="nk-gap-1"></div>
+                        <h3 class="nk-product-title h5"><a href="{{p.GameURL}}">{{p.gamename}}</a></h3>
+                       
+                    </div>
+                </div>
+            </div></div>
+            {% endfor %}
         </div>
     </div>
 

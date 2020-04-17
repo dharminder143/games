@@ -4,17 +4,26 @@ from django.shortcuts import render , redirect , get_object_or_404
 # Create your views here.
 from .resources import PersonResource
 from tablib import Dataset
-from django.db.models import Q , Count
+from django.db.models import Q 
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def product(request):
-    postss=Product.objects.values('category').distinct()
-    post = Product.objects.filter(category__in=[item['category'] for item in postss])[:7]
-    action = Product.objects.filter(category='Action')[:10]
-    return render(request,'blog/index.html',{'posts':post,
-												'actions':action,
-												}) 
+    pos=Product.objects.all().order_by('-created_at')[:20]
+    Action = Product.objects.filter(category='Action').order_by('-created_at')[:10]
+    Racing = Product.objects.filter(category='Racing').order_by('-created_at')[:10]
+    sports = Product.objects.filter(category='Sports').order_by('-created_at')[:10]
+    Adventure = Product.objects.filter(category='Adventure').order_by('-created_at')[:10]
+    Funny = Product.objects.filter(category='Funny').order_by('-created_at')[:10]
+    General = Product.objects.filter(category='General').order_by('-created_at')[:10]
+    return render(request,'blog/index.html',{'Action':Action,
+                                                'posts':pos,
+                                                'Racing':Racing,
+												'sports':sports,
+                                                'Adventure':Adventure,
+                                                'Funny':Funny,
+                                                'General':General,
+												})
 
 def post(request):
     post = Product.objects.all()
