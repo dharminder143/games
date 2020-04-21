@@ -109,8 +109,18 @@
                 {{p.category}}
                 
 			</a></li>
-            {% endfor %}  
-      
+            {% endfor %} 
+            {% if user.is_authenticated %}
+            <li>Hello {{ user.username }} </li>
+            <li><a href="{% url 'logout' %}">logout</a></li>
+            {% else %}
+            <li class=" nk-drop-item">
+            <a href="{% url 'login' %}">
+                LOGIN
+                
+            </a></li>
+            {% endif %}
+
                 </ul>
                 <ul class="nk-nav nk-nav-right nk-nav-icons">
                     <img src="/static/assets/images/logo.png" alt="" class="mobile-logo" style="float: left; width: 139px;">

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+
 from .models import *
 from django.shortcuts import render , redirect , get_object_or_404
 # Create your views here.
@@ -7,6 +7,8 @@ from tablib import Dataset
 from django.db.models import Q 
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth import login, authenticate
+from .forms import SignUpForm
 
 def product(request):
     pos=Product.objects.all().order_by('-created_at')[:20]
@@ -32,14 +34,6 @@ def post(request):
     post = paginator.get_page(page)
     return render(request,'blog/single-game.html',{'posts':post,											
 												})  
-def post_action(request):
-    action = Product.objects.filter(category='Action')
-    paginator = Paginator(action, 12)
-    page = request.GET.get('page')
-    action = paginator.get_page(page)
-    return render(request,'blog/action-game.html',{'actions':action,
-												})  
-
 
 def simple_upload(request):
     if request.method == 'POST':
@@ -77,4 +71,16 @@ def search(request):
     return render(request,'blog/search.html',{'allpost':allpost, 'query':query})
 
 
-
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=raw_password)
+            login(user)
+            return redirect('product')
+    else:
+        form = SignUpForm()
+    return render(request, 'registration/signup.html', {'form': form})
