@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from blog.models import *
+from django.contrib.auth.models import User
 
 class ItemSerializer(serializers.ModelSerializer):
 
@@ -15,3 +16,9 @@ class ItemSerializer(serializers.ModelSerializer):
             'created_at',
         )
 
+class UserSerializer(serializers.ModelSerializer):
+    # Product = serializers.PrimaryKeyRelatedField(many=True, queryset=Product.objects.all())
+
+    class Meta:
+        model = User
+        fields = ['id', 'username']
